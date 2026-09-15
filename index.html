@@ -1,0 +1,279 @@
+<title>TikTomb</title>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#faf9f5;
+    --surface:#ffffff;
+    --surface-2:#f2f0e9;
+    --line:#e6e3d9;
+    --text:#18161c;
+    --text-muted:#6b6870;
+    --accent:#fe2c55;
+    --accent-ink:#c2103c;
+    --accent-wash: rgba(254,44,85,0.12);
+    --radius-lg:28px;
+    --radius-md:16px;
+    --font-display:'Bricolage Grotesque', system-ui, sans-serif;
+    --font-body:'Hanken Grotesk', -apple-system, system-ui, sans-serif;
+    --font-mono:'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1100px 620px at 82% -8%, var(--accent-wash), transparent 60%),
+      radial-gradient(900px 500px at 8% 0%, rgba(0,0,0,0.04), transparent 55%),
+      var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    -webkit-font-smoothing:antialiased;
+    padding-inline:24px;
+  }
+  h1,h2,h3{font-family:var(--font-display); text-wrap:balance; margin:0;}
+  p{margin:0;}
+  a{color:inherit;}
+  img,[style*="aspect-ratio"]{max-width:100%;}
+
+  .wrap{max-width:1080px; margin-inline:auto;}
+
+  nav{display:flex; align-items:center; justify-content:space-between; padding-block:22px;}
+  .brand{display:flex; align-items:center; gap:10px; font-family:var(--font-display); font-weight:700; font-size:19px; letter-spacing:-0.01em;}
+  .brand svg{width:30px; height:30px; display:block;}
+  .nav-links{display:flex; align-items:center; gap:28px; font-size:14.5px; color:var(--text-muted);}
+  .nav-links a{text-decoration:none; transition:color .15s;}
+  .nav-links a:hover{color:var(--text);}
+  .pill-btn{
+    background:var(--surface-2); border:1px solid var(--line); color:var(--text);
+    padding:8px 16px; border-radius:999px; font-size:14px; font-weight:600;
+    text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+  }
+
+  .hero{padding-block:64px 40px; display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center;}
+  .eyebrow{
+    font-family:var(--font-mono); font-size:12.5px; letter-spacing:0.09em; text-transform:uppercase;
+    color:var(--accent-ink); display:flex; align-items:center; gap:8px; margin-bottom:18px;
+  }
+  .eyebrow::before{content:""; width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px var(--accent-wash);}
+  .hero h1{font-size:clamp(38px,5vw,60px); line-height:1.04; font-weight:700; letter-spacing:-0.02em;}
+  .hero h1 em{font-style:normal; color:var(--accent-ink); background:linear-gradient(to bottom, transparent 62%, var(--accent) 62%); padding-inline:1px;}
+  .hero-sub{margin-top:20px; font-size:18px; line-height:1.55; color:var(--text-muted); max-width:46ch;}
+  .hero-ctas{display:flex; gap:12px; margin-top:32px; flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--accent); color:#ffffff; font-weight:700; font-size:15.5px;
+    padding:14px 24px; border-radius:999px; text-decoration:none; display:inline-flex; align-items:center; gap:10px;
+    transition:transform .15s, box-shadow .2s;
+  }
+  .btn-primary:hover{transform:translateY(-1px); box-shadow:0 8px 30px -6px var(--accent-wash);}
+  .btn-secondary{
+    background:transparent; color:var(--text); border:1px solid var(--line); font-weight:600; font-size:15.5px;
+    padding:13px 22px; border-radius:999px; text-decoration:none; display:inline-flex; align-items:center; gap:10px;
+  }
+  .hero-meta{margin-top:16px; font-family:var(--font-mono); font-size:12.5px; color:var(--text-muted);}
+
+  .mascot-stage{display:flex; align-items:center; justify-content:center; position:relative; height:360px;}
+  .mascot-glow{
+    position:absolute; width:280px; height:280px; border-radius:50%;
+    background:radial-gradient(circle, rgba(24,22,28,0.10), transparent 70%);
+    filter:blur(10px); animation:float 6s ease-in-out infinite;
+  }
+  .mascot-mark{position:relative; width:220px; height:220px; animation:float 6s ease-in-out infinite;}
+  @keyframes float{0%,100%{transform:translateY(0);} 50%{transform:translateY(-14px);}}
+  @media (prefers-reduced-motion: reduce){ .mascot-glow, .mascot-mark{animation:none;} }
+
+  .mockup-section{padding-block:20px 80px;}
+  .mac-window{
+    --mw-muted:#9b98a6;
+    background:#121016; border-radius:var(--radius-lg); overflow:hidden; border:1px solid #2a2732;
+    box-shadow:0 40px 80px -30px rgba(24,22,28,0.35);
+  }
+  .mw-titlebar{height:40px; display:flex; align-items:center; padding-inline:16px; gap:8px; background:#17151c; border-bottom:1px solid #2a2732; position:relative;}
+  .mw-dot{width:11px; height:11px; border-radius:50%;}
+  .mw-titlebar span{position:absolute; left:50%; transform:translateX(-50%); font-size:13px; color:var(--mw-muted); font-weight:600;}
+  .mw-body{min-height:340px; display:flex; align-items:center; justify-content:center; position:relative;
+    background: radial-gradient(600px 400px at 70% 20%, rgba(37,244,238,0.16), transparent 60%),
+                radial-gradient(500px 400px at 20% 90%, rgba(254,44,85,0.16), transparent 55%), #0e0c12;
+  }
+  .mw-card{width:340px; background:#1a1820; border:1px solid #2a2732; border-radius:20px; padding:28px; text-align:center;}
+  .mw-card .mascot-mini{width:88px; height:88px; margin:0 auto 16px;}
+  .mw-card b{display:block; color:#f3f2ed; font-size:17px; margin-bottom:6px;}
+  .mw-card span{color:var(--mw-muted); font-size:13px;}
+
+  .section-head{margin-bottom:36px;}
+  .section-head .eyebrow{margin-bottom:10px;}
+  .section-head h2{font-size:clamp(26px,3.4vw,36px); font-weight:700; letter-spacing:-0.01em;}
+  .features{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line); border-radius:var(--radius-lg); overflow:hidden;
+    margin-bottom:90px;
+  }
+  .feature{background:var(--surface); padding:26px 24px;}
+  .feature .num{font-family:var(--font-mono); font-size:12px; color:var(--accent-ink); margin-bottom:14px; display:block;}
+  .feature h3{font-size:16.5px; font-weight:700; margin-bottom:8px;}
+  .feature p{font-size:14px; line-height:1.55; color:var(--text-muted);}
+
+  .download-panel{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-lg); padding:40px; margin-bottom:70px;}
+  .dl-card{background:var(--surface-2); border:1px solid var(--line); border-radius:var(--radius-md); padding:22px; display:flex; flex-direction:column; gap:14px; max-width:340px;}
+  .dl-card .chip-label{font-family:var(--font-mono); font-size:11.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-muted);}
+  .dl-card h3{font-size:20px; font-weight:700;}
+  .dl-card .size{font-family:var(--font-mono); font-size:13px; color:var(--text-muted);}
+  .dl-card .btn-primary{justify-content:center; width:100%;}
+  .install-note{
+    margin-top:26px; padding:18px 20px; background:#141218; border:1px solid #2a2732;
+    border-radius:var(--radius-md); font-family:var(--font-mono); font-size:13px; line-height:1.7; color:#b3b0bb;
+  }
+  .install-note strong{color:#f3f2ed;}
+  .install-note .accent{color:var(--accent);}
+
+  footer{border-top:1px solid var(--line); padding-block:32px 60px; display:flex; justify-content:space-between; align-items:flex-start; gap:24px; flex-wrap:wrap;}
+  footer .disclaimer{font-size:13px; color:var(--text-muted); max-width:56ch; line-height:1.6;}
+  footer .foot-links{display:flex; gap:20px; font-size:13.5px; color:var(--text-muted);}
+  footer .foot-links a{text-decoration:none;}
+  footer .foot-links a:hover{color:var(--text);}
+
+  @media (max-width:820px){
+    .hero{grid-template-columns:1fr; gap:20px; padding-block:40px 20px;}
+    .mascot-stage{height:220px; order:-1;}
+    .mascot-mark{width:140px; height:140px;}
+    .mascot-glow{width:180px; height:180px;}
+    .features{grid-template-columns:1fr;}
+    footer{flex-direction:column;}
+    .nav-links{display:none;}
+  }
+</style>
+
+<div class="wrap">
+  <nav>
+    <div class="brand"><svg width="30" height="30" viewBox="-350 -350 700 700" fill="none" style="transform:scale(0.85)"><ellipse cx="20" cy="252" rx="10" ry="16" fill="#25f4ee" transform="translate(-14,10)"/>
+               <ellipse cx="20" cy="252" rx="10" ry="16" fill="#fe2c55" transform="translate(14,-6)"/>
+               <ellipse cx="20" cy="252" rx="92" ry="70" fill="#ffffff" stroke="#161616" stroke-width="8" transform="translate(0,-260)"/>
+               <path d="M 105,-8 L 105,-490 Q 105,-520 140,-510 L 260,-475 Q 285,-466 285,-438 L 285,-350"
+                     fill="none" stroke="#ffffff" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+               <path d="M 105,-8 L 105,-490 Q 105,-520 140,-510 L 260,-475 Q 285,-466 285,-438 L 285,-350"
+                     fill="none" stroke="#161616" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+               <circle cx="-8" cy="-20" r="16" fill="#161616"/>
+               <circle cx="46" cy="-12" r="16" fill="#161616"/>
+               <circle cx="-3" cy="-25" r="5" fill="#fff"/>
+               <circle cx="51" cy="-17" r="5" fill="#fff"/>
+               <ellipse cx="18" cy="25" rx="22" ry="14" fill="#fe2c55"/></svg>TikTomb</div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#download">Download</a>
+      <a href="https://github.com/hiuih/tiktomb" target="_blank" rel="noopener">Source</a>
+    </div>
+    <a class="pill-btn" href="https://github.com/hiuih/tiktomb" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+      GitHub
+    </a>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <div class="eyebrow">Unofficial · macOS · v1.0.0</div>
+      <h1>TikTok, <em>native</em><br>on your Mac.</h1>
+      <p class="hero-sub">TikTomb wraps the real TikTok in a proper native shell — dock icon, title bar, working camera and mic, real notifications. Same account, same feed, none of the browser tab.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="#download">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a.75.75 0 0 1 .75.75v7.19l2.72-2.72a.75.75 0 1 1 1.06 1.06l-4 4a.75.75 0 0 1-1.06 0l-4-4a.75.75 0 0 1 1.06-1.06l2.72 2.72V1.75A.75.75 0 0 1 8 1ZM2 12.5a.75.75 0 0 1 .75.75v.75c0 .28.22.5.5.5h9.5a.5.5 0 0 0 .5-.5v-.75a.75.75 0 0 1 1.5 0v.75A2 2 0 0 1 12.75 16h-9.5A2 2 0 0 1 1.25 14v-.75A.75.75 0 0 1 2 12.5Z"/></svg>
+          Download for Mac
+        </a>
+        <a class="btn-secondary" href="https://github.com/hiuih/tiktomb" target="_blank" rel="noopener">View source</a>
+      </div>
+      <div class="hero-meta">Apple Silicon · macOS 11+</div>
+    </div>
+    <div class="mascot-stage">
+      <div class="mascot-glow"></div>
+      <svg class="mascot-mark" viewBox="-350 -350 700 700" fill="none" style="transform:scale(0.85)"><ellipse cx="20" cy="252" rx="10" ry="16" fill="#25f4ee" transform="translate(-14,10)"/>
+               <ellipse cx="20" cy="252" rx="10" ry="16" fill="#fe2c55" transform="translate(14,-6)"/>
+               <ellipse cx="20" cy="252" rx="92" ry="70" fill="#ffffff" stroke="#161616" stroke-width="8" transform="translate(0,-260)"/>
+               <path d="M 105,-8 L 105,-490 Q 105,-520 140,-510 L 260,-475 Q 285,-466 285,-438 L 285,-350"
+                     fill="none" stroke="#ffffff" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+               <path d="M 105,-8 L 105,-490 Q 105,-520 140,-510 L 260,-475 Q 285,-466 285,-438 L 285,-350"
+                     fill="none" stroke="#161616" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+               <circle cx="-8" cy="-20" r="16" fill="#161616"/>
+               <circle cx="46" cy="-12" r="16" fill="#161616"/>
+               <circle cx="-3" cy="-25" r="5" fill="#fff"/>
+               <circle cx="51" cy="-17" r="5" fill="#fff"/>
+               <ellipse cx="18" cy="25" rx="22" ry="14" fill="#fe2c55"/></svg>
+    </div>
+  </section>
+
+  <section class="mockup-section">
+    <div class="mac-window">
+      <div class="mw-titlebar">
+        <div class="mw-dot" style="background:#ff5f57"></div>
+        <div class="mw-dot" style="background:#febc2e"></div>
+        <div class="mw-dot" style="background:#28c840"></div>
+        <span>TikTomb</span>
+      </div>
+      <div class="mw-body">
+        <div class="mw-card">
+          <svg class="mascot-mini" viewBox="-350 -350 700 700" fill="none" style="transform:scale(0.85)"><ellipse cx="20" cy="252" rx="10" ry="16" fill="#25f4ee" transform="translate(-14,10)"/>
+               <ellipse cx="20" cy="252" rx="10" ry="16" fill="#fe2c55" transform="translate(14,-6)"/>
+               <ellipse cx="20" cy="252" rx="92" ry="70" fill="#ffffff" stroke="#161616" stroke-width="8" transform="translate(0,-260)"/>
+               <path d="M 105,-8 L 105,-490 Q 105,-520 140,-510 L 260,-475 Q 285,-466 285,-438 L 285,-350"
+                     fill="none" stroke="#ffffff" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+               <path d="M 105,-8 L 105,-490 Q 105,-520 140,-510 L 260,-475 Q 285,-466 285,-438 L 285,-350"
+                     fill="none" stroke="#161616" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+               <circle cx="-8" cy="-20" r="16" fill="#161616"/>
+               <circle cx="46" cy="-12" r="16" fill="#161616"/>
+               <circle cx="-3" cy="-25" r="5" fill="#fff"/>
+               <circle cx="51" cy="-17" r="5" fill="#fff"/>
+               <ellipse cx="18" cy="25" rx="22" ry="14" fill="#fe2c55"/></svg>
+          <b>TikTomb</b>
+          <span>Camera & mic ready · notifications on</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="section-head">
+      <div class="eyebrow">What changes</div>
+      <h2>A browser tab, minus the browser.</h2>
+    </div>
+    <div class="features">
+      <div class="feature"><span class="num">01</span><h3>Real dock presence</h3><p>Its own icon, its own app name, its own Cmd+Tab slot — not buried in forty browser tabs.</p></div>
+      <div class="feature"><span class="num">02</span><h3>Camera & mic that work</h3><p>Proper hardened-runtime entitlements, so macOS actually prompts you for access — for filming, duets, and Live.</p></div>
+      <div class="feature"><span class="num">03</span><h3>Native notifications</h3><p>Alerts land in Notification Center like any other Mac app — no more missed activity because a tab was backgrounded.</p></div>
+      <div class="feature"><span class="num">04</span><h3>Stays logged in</h3><p>Session persists across restarts. Open it, you're in — same as the last time you closed it.</p></div>
+      <div class="feature"><span class="num">05</span><h3>Native title bar</h3><p>No more custom on-page controls fighting with real macOS window chrome — a genuine title bar, always.</p></div>
+      <div class="feature"><span class="num">06</span><h3>It's the real thing</h3><p>Every video, DM, and login goes straight to TikTok's own servers. Nothing is proxied, logged, or altered.</p></div>
+    </div>
+  </section>
+
+  <section id="download">
+    <div class="section-head">
+      <div class="eyebrow">Get it</div>
+      <h2>One click, native app.</h2>
+    </div>
+    <div class="download-panel">
+      <div class="dl-card">
+        <span class="chip-label">Apple Silicon</span>
+        <h3>M1 / M2 / M3 / M4</h3>
+        <span class="size">TikTomb-1.0.0-arm64.dmg · 92 MB</span>
+        <a class="btn-primary" href="https://github.com/hiuih/tiktomb/releases/download/v1.0.0/TikTomb-1.0.0-arm64.dmg">Download .dmg</a>
+      </div>
+      <div class="install-note">
+        <span class="accent">$</span> This is an indie build, not signed with an Apple Developer ID.<br>
+        <span class="accent">$</span> First launch: right-click TikTomb.app → <strong>Open</strong> → Open.<br>
+        <span class="accent">$</span> Or: System Settings → Privacy &amp; Security → "Open Anyway."
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="disclaimer">TikTomb is an independent, unofficial project. It is not made by, affiliated with, or endorsed by TikTok/ByteDance. TikTok and its logo are trademarks of TikTok/ByteDance. TikTomb is simply a native shell around their public website — all data goes directly to TikTok's own servers.</p>
+    <div class="foot-links">
+      <a href="https://github.com/hiuih/tiktomb" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/hiuih/tiktomb/releases" target="_blank" rel="noopener">Releases</a>
+      <a href="https://github.com/hiuih/tiktomb/issues" target="_blank" rel="noopener">Report an issue</a>
+    </div>
+  </footer>
+</div>
