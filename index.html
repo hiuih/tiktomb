@@ -1,3 +1,4 @@
+<meta charset="utf-8">
 <title>TikTomb</title>
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
@@ -16,6 +17,7 @@
     --accent:#fe2c55;
     --accent-ink:#c2103c;
     --accent-wash: rgba(254,44,85,0.12);
+    --accent-text:#ffffff;
     --radius-lg:28px;
     --radius-md:16px;
     --font-display:'Bricolage Grotesque', system-ui, sans-serif;
@@ -62,7 +64,7 @@
   }
   .eyebrow::before{content:""; width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px var(--accent-wash);}
   .hero h1{font-size:clamp(38px,5vw,60px); line-height:1.04; font-weight:700; letter-spacing:-0.02em;}
-  .hero h1 em{font-style:normal; color:var(--accent-ink); background:linear-gradient(to bottom, transparent 62%, var(--accent) 62%); padding-inline:1px;}
+  .hero h1 em{font-style:normal; color:var(--accent-text); background:var(--accent); border-radius:10px; padding-inline:10px;}
   .hero-sub{margin-top:20px; font-size:18px; line-height:1.55; color:var(--text-muted); max-width:46ch;}
   .hero-ctas{display:flex; gap:12px; margin-top:32px; flex-wrap:wrap;}
   .btn-primary{
@@ -150,18 +152,18 @@
 
 <div class="wrap">
   <nav>
-    <div class="brand"><svg width="30" height="30" viewBox="-350 -350 700 700" fill="none" style="transform:scale(0.85)"><ellipse cx="20" cy="252" rx="10" ry="16" fill="#25f4ee" transform="translate(-14,10)"/>
-               <ellipse cx="20" cy="252" rx="10" ry="16" fill="#fe2c55" transform="translate(14,-6)"/>
-               <ellipse cx="20" cy="252" rx="92" ry="70" fill="#ffffff" stroke="#161616" stroke-width="8" transform="translate(0,-260)"/>
-               <path d="M 105,-8 L 105,-490 Q 105,-520 140,-510 L 260,-475 Q 285,-466 285,-438 L 285,-350"
+    <div class="brand"><svg width="30" height="30" viewBox="-150 -560 450 650" fill="none" style=""><ellipse cx="0" cy="0" rx="10" ry="16" fill="#25f4ee" transform="translate(-14,10)"/>
+               <ellipse cx="0" cy="0" rx="10" ry="16" fill="#fe2c55" transform="translate(14,-6)"/>
+               <ellipse cx="0" cy="0" rx="92" ry="70" fill="#ffffff" stroke="#161616" stroke-width="8"/>
+               <path d="M 85,0 L 85,-482 Q 85,-512 120,-502 L 240,-467 Q 265,-458 265,-430 L 265,-342"
                      fill="none" stroke="#ffffff" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
-               <path d="M 105,-8 L 105,-490 Q 105,-520 140,-510 L 260,-475 Q 285,-466 285,-438 L 285,-350"
+               <path d="M 85,0 L 85,-482 Q 85,-512 120,-502 L 240,-467 Q 265,-458 265,-430 L 265,-342"
                      fill="none" stroke="#161616" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
-               <circle cx="-8" cy="-20" r="16" fill="#161616"/>
-               <circle cx="46" cy="-12" r="16" fill="#161616"/>
-               <circle cx="-3" cy="-25" r="5" fill="#fff"/>
-               <circle cx="51" cy="-17" r="5" fill="#fff"/>
-               <ellipse cx="18" cy="25" rx="22" ry="14" fill="#fe2c55"/></svg>TikTomb</div>
+               <circle cx="-28" cy="-12" r="16" fill="#161616"/>
+               <circle cx="26" cy="-4" r="16" fill="#161616"/>
+               <circle cx="-23" cy="-17" r="5" fill="#fff"/>
+               <circle cx="31" cy="-9" r="5" fill="#fff"/>
+               <ellipse cx="-2" cy="33" rx="22" ry="14" fill="#fe2c55"/></svg>TikTomb</div>
     <div class="nav-links">
       <a href="#features">Features</a>
       <a href="#download">Download</a>
@@ -189,18 +191,18 @@
     </div>
     <div class="mascot-stage">
       <div class="mascot-glow"></div>
-      <svg class="mascot-mark" viewBox="-350 -350 700 700" fill="none" style="transform:scale(0.85)"><ellipse cx="20" cy="252" rx="10" ry="16" fill="#25f4ee" transform="translate(-14,10)"/>
-               <ellipse cx="20" cy="252" rx="10" ry="16" fill="#fe2c55" transform="translate(14,-6)"/>
-               <ellipse cx="20" cy="252" rx="92" ry="70" fill="#ffffff" stroke="#161616" stroke-width="8" transform="translate(0,-260)"/>
-               <path d="M 105,-8 L 105,-490 Q 105,-520 140,-510 L 260,-475 Q 285,-466 285,-438 L 285,-350"
+      <svg class="mascot-mark" viewBox="-150 -560 450 650" fill="none" style=""><ellipse cx="0" cy="0" rx="10" ry="16" fill="#25f4ee" transform="translate(-14,10)"/>
+               <ellipse cx="0" cy="0" rx="10" ry="16" fill="#fe2c55" transform="translate(14,-6)"/>
+               <ellipse cx="0" cy="0" rx="92" ry="70" fill="#ffffff" stroke="#161616" stroke-width="8"/>
+               <path d="M 85,0 L 85,-482 Q 85,-512 120,-502 L 240,-467 Q 265,-458 265,-430 L 265,-342"
                      fill="none" stroke="#ffffff" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
-               <path d="M 105,-8 L 105,-490 Q 105,-520 140,-510 L 260,-475 Q 285,-466 285,-438 L 285,-350"
+               <path d="M 85,0 L 85,-482 Q 85,-512 120,-502 L 240,-467 Q 265,-458 265,-430 L 265,-342"
                      fill="none" stroke="#161616" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
-               <circle cx="-8" cy="-20" r="16" fill="#161616"/>
-               <circle cx="46" cy="-12" r="16" fill="#161616"/>
-               <circle cx="-3" cy="-25" r="5" fill="#fff"/>
-               <circle cx="51" cy="-17" r="5" fill="#fff"/>
-               <ellipse cx="18" cy="25" rx="22" ry="14" fill="#fe2c55"/></svg>
+               <circle cx="-28" cy="-12" r="16" fill="#161616"/>
+               <circle cx="26" cy="-4" r="16" fill="#161616"/>
+               <circle cx="-23" cy="-17" r="5" fill="#fff"/>
+               <circle cx="31" cy="-9" r="5" fill="#fff"/>
+               <ellipse cx="-2" cy="33" rx="22" ry="14" fill="#fe2c55"/></svg>
     </div>
   </section>
 
@@ -214,18 +216,18 @@
       </div>
       <div class="mw-body">
         <div class="mw-card">
-          <svg class="mascot-mini" viewBox="-350 -350 700 700" fill="none" style="transform:scale(0.85)"><ellipse cx="20" cy="252" rx="10" ry="16" fill="#25f4ee" transform="translate(-14,10)"/>
-               <ellipse cx="20" cy="252" rx="10" ry="16" fill="#fe2c55" transform="translate(14,-6)"/>
-               <ellipse cx="20" cy="252" rx="92" ry="70" fill="#ffffff" stroke="#161616" stroke-width="8" transform="translate(0,-260)"/>
-               <path d="M 105,-8 L 105,-490 Q 105,-520 140,-510 L 260,-475 Q 285,-466 285,-438 L 285,-350"
+          <svg class="mascot-mini" viewBox="-150 -560 450 650" fill="none" style=""><ellipse cx="0" cy="0" rx="10" ry="16" fill="#25f4ee" transform="translate(-14,10)"/>
+               <ellipse cx="0" cy="0" rx="10" ry="16" fill="#fe2c55" transform="translate(14,-6)"/>
+               <ellipse cx="0" cy="0" rx="92" ry="70" fill="#ffffff" stroke="#161616" stroke-width="8"/>
+               <path d="M 85,0 L 85,-482 Q 85,-512 120,-502 L 240,-467 Q 265,-458 265,-430 L 265,-342"
                      fill="none" stroke="#ffffff" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
-               <path d="M 105,-8 L 105,-490 Q 105,-520 140,-510 L 260,-475 Q 285,-466 285,-438 L 285,-350"
+               <path d="M 85,0 L 85,-482 Q 85,-512 120,-502 L 240,-467 Q 265,-458 265,-430 L 265,-342"
                      fill="none" stroke="#161616" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
-               <circle cx="-8" cy="-20" r="16" fill="#161616"/>
-               <circle cx="46" cy="-12" r="16" fill="#161616"/>
-               <circle cx="-3" cy="-25" r="5" fill="#fff"/>
-               <circle cx="51" cy="-17" r="5" fill="#fff"/>
-               <ellipse cx="18" cy="25" rx="22" ry="14" fill="#fe2c55"/></svg>
+               <circle cx="-28" cy="-12" r="16" fill="#161616"/>
+               <circle cx="26" cy="-4" r="16" fill="#161616"/>
+               <circle cx="-23" cy="-17" r="5" fill="#fff"/>
+               <circle cx="31" cy="-9" r="5" fill="#fff"/>
+               <ellipse cx="-2" cy="33" rx="22" ry="14" fill="#fe2c55"/></svg>
           <b>TikTomb</b>
           <span>Camera & mic ready · notifications on</span>
         </div>
