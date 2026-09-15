@@ -26,6 +26,18 @@ const ALLOWED_HOSTS = [
 // TikTok's init code (which likely only subscribes to push inside its own
 // "Enable" button's click handler) re-runs seeing "granted" from page load
 // and actually completes the push subscription.
+// TikTok's desktop web already lays out video + right-side action column +
+// bottom-left caption almost identically to the real mobile app — the one
+// thing breaking that illusion is the persistent 240px left sidebar (For
+// You/Explore/Following/etc.) and top header, neither of which exist on
+// mobile at all. Hiding just those two lets the video expand to fill the
+// window edge-to-edge, matching the mobile experience closely. Verified live
+// against the real DOM before shipping this, not guessed.
+const MOBILE_STYLE_CSS = `
+[class*="SideNav" i] { display: none !important; }
+[class*="DivHeaderContainer" i] { display: none !important; }
+`;
+
 const NOTIF_PROBE_JS = `
 (() => {
   if (!window.Notification) return;
@@ -161,6 +173,9 @@ function createApp() {
   });
   main.webContents.once('did-fail-load', swapIn);
 
+  main.webContents.on('dom-ready', () => {
+    main.webContents.insertCSS(MOBILE_STYLE_CSS).catch(() => {});
+  });
   main.webContents.on('did-finish-load', () => {
     main.webContents.executeJavaScript(NOTIF_PROBE_JS).catch(() => {});
   });
