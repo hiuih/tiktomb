@@ -17,6 +17,8 @@ const ALLOWED_HOSTS = [
   'tiktokcdn.com',
   'tiktokcdn-us.com',
   'ibytedtos.com',
+  'accounts.google.com',
+  'appleid.apple.com',
 ];
 
 // Proactively resolves Notification.permission instead of waiting on
