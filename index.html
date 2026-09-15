@@ -121,7 +121,8 @@
   .feature p{font-size:14px; line-height:1.55; color:var(--text-muted);}
 
   .download-panel{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-lg); padding:40px; margin-bottom:70px;}
-  .dl-card{background:var(--surface-2); border:1px solid var(--line); border-radius:var(--radius-md); padding:22px; display:flex; flex-direction:column; gap:14px; max-width:340px;}
+  .dl-grid{display:flex; gap:16px; flex-wrap:wrap;}
+  .dl-card{background:var(--surface-2); border:1px solid var(--line); border-radius:var(--radius-md); padding:22px; display:flex; flex-direction:column; gap:14px; flex:1 1 260px; max-width:340px;}
   .dl-card .chip-label{font-family:var(--font-mono); font-size:11.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-muted);}
   .dl-card h3{font-size:20px; font-weight:700;}
   .dl-card .size{font-family:var(--font-mono); font-size:13px; color:var(--text-muted);}
@@ -187,7 +188,7 @@
         </a>
         <a class="btn-secondary" href="https://github.com/hiuih/tiktomb" target="_blank" rel="noopener">View source</a>
       </div>
-      <div class="hero-meta">Apple Silicon · macOS 11+</div>
+      <div class="hero-meta">macOS (Apple Silicon) &amp; Windows 10/11</div>
     </div>
     <div class="mascot-stage">
       <div class="mascot-glow"></div>
@@ -256,16 +257,24 @@
       <h2>One click, native app.</h2>
     </div>
     <div class="download-panel">
-      <div class="dl-card">
-        <span class="chip-label">Apple Silicon</span>
-        <h3>M1 / M2 / M3 / M4</h3>
-        <span class="size">TikTomb-1.0.0-arm64.dmg · 92 MB</span>
-        <a class="btn-primary" href="https://github.com/hiuih/tiktomb/releases/download/v1.0.0/TikTomb-1.0.0-arm64.dmg">Download .dmg</a>
+      <div class="dl-grid">
+        <div class="dl-card">
+          <span class="chip-label">macOS · Apple Silicon</span>
+          <h3>M1 / M2 / M3 / M4</h3>
+          <span class="size">TikTomb-1.0.0-arm64.dmg · 92 MB</span>
+          <a class="btn-primary" href="https://github.com/hiuih/tiktomb/releases/download/v1.0.0/TikTomb-1.0.0-arm64.dmg">Download .dmg</a>
+        </div>
+        <div class="dl-card">
+          <span class="chip-label">Windows · x64</span>
+          <h3>Windows 10 / 11</h3>
+          <span class="size">TikTomb.Setup.1.0.0.exe · 69 MB</span>
+          <a class="btn-primary" href="https://github.com/hiuih/tiktomb/releases/download/v1.0.0/TikTomb.Setup.1.0.0.exe">Download .exe</a>
+        </div>
       </div>
       <div class="install-note">
-        <span class="accent">$</span> This is an indie build, not signed with an Apple Developer ID.<br>
-        <span class="accent">$</span> First launch: right-click TikTomb.app → <strong>Open</strong> → Open.<br>
-        <span class="accent">$</span> Or: System Settings → Privacy &amp; Security → "Open Anyway."
+        <span class="accent">$</span> These are indie builds, not code-signed by Apple or Microsoft.<br>
+        <span class="accent">$</span> macOS: right-click TikTomb.app → <strong>Open</strong> → Open.<br>
+        <span class="accent">$</span> Windows: click <strong>More info → Run anyway</strong> on the SmartScreen prompt.
       </div>
     </div>
   </section>
