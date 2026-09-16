@@ -12,6 +12,16 @@ const TIKTOK_URL = 'https://www.tiktok.com/foryou';
 // TikTok's UA sniffing recognizes it as a real Chrome build (otherwise it
 // can redirect to an unsupported-browser page).
 const CHROME_UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36';
+
+// session/webContents-level UA overrides aren't reliably applied to a
+// brand-new popup window's very first navigation — verified live against a
+// real Google sign-in popup: its first request went out with Electron's
+// actual default UA baked in ("Electron/x.x.x" and all), which is likely
+// why fingerprint-sensitive sign-in flows (Apple ID especially) could behave
+// inconsistently. app.userAgentFallback changes Electron's own baseline
+// default before any renderer process spawns, fixing this at the root.
+app.userAgentFallback = CHROME_UA;
+
 const ALLOWED_HOSTS = [
   'tiktok.com',
   'tiktokcdn.com',
